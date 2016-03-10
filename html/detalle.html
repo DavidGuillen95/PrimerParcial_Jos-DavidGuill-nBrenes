@@ -1,5 +1,22 @@
+<div class="menuUsuario">
+    <div class="container">
+        <nav class="centroMenu">
+            <div class="navbar-inverse">
+                <div>
+                    <ul class="nav navbar-nav">
+                      <li><a href="#/usuario/registro">Registro</a></li>
+                      <li><a href="#/usuario/resumen">Resumen</a></li>
+                      <li><a href="#/usuario/agregar">Agregar</a></li>
+                      <li class="active"><a href="#/usuario/detalle">Detalle</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
 <div class="container">
-	<h1 class="col-sm-offset-4">Mi cuenta | Detalle</h1>
+	<h1>Mi cuenta | Detalle</h1>
 </div>
 <div class="container">
     <h2>Detalle de Trasacción</h2>
@@ -16,12 +33,12 @@
             </tr>
         </thead>
         <tbody id="listaMisiones">
-        	<tr>
-                <td>5</td>
-                <td>5</td>
-                <td>5</td>
-                <td>5</td>
-                <td>5</td>
+        	<tr ng-repeat="detalle in detalles">
+                <td>{{detalle.transaccion}}</td>
+                <td>{{detalle.fecha}}</td>
+                <td>{{detalle.detalle}}</td>
+                <td>{{detalle.monto}}</td>
+                <td><a class="">Ver</a></td>
             </tr>
         </tbody>
     </table>

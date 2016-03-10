@@ -1,31 +1,48 @@
+<div class="menuUsuario">
+    <div class="container">
+        <nav class="centroMenu">
+            <div class="navbar-inverse">
+                <div>
+                    <ul class="nav navbar-nav">
+                      <li><a href="#/usuario/registro">Registro</a></li>
+                      <li><a href="#/usuario/resumen">Resumen</a></li>
+                      <li class="active"><a href="#/usuario/agregar">Agregar</a></li>
+                      <li><a href="#/usuario/detalle">Detalle</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
 <div class="container">
-    <h1 class="col-sm-offset-4">Mi cuenta | Agregar</h1>
+    <h1>Mi cuenta | Agregar</h1>
 </div>
 <div class="container">
     <h2>Agregar Movimiento</h2>
     <hr class="featurette">
-    <form class="form-horizontal" role="form" method="post" action="index.php">
+    <form class="form-horizontal">
     	<div class="form-group">
             <div class="col-sm-8 col-sm-offset-2">
             	<label for="fecha" class="control-label">Fecha</label>
-                <input type="date" class="form-control" name="fecha">
+                <input type="date" class="form-control" name="fecha" required ng-model="agregarModel.fecha">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-8 col-sm-offset-2">
             	<label for="monto" class="control-label">Monto</label>
-                <input type="text" class="form-control" name="monto">
+                <input type="text" class="form-control" name="monto" required ng-model="agregarModel.monto">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-8 col-sm-offset-2">
             	<label for="detalle" class="control-label">Detalle</label>
-                <textarea class="form-control" name="detalle"></textarea>
+                <textarea class="form-control" name="detalle" required ng-model="agregarModel.detalle"></textarea>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-8 col-sm-offset-2">
-                <input type="submit" value="Agregar" class="btn btn-primary pull-right">
+                <input type="submit" value="Agregar" class="btn btn-primary pull-right" ng-click="agregarBtn()">
             </div>
         </div>
    </form>

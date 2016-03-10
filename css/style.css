@@ -1,3 +1,15 @@
-body{
+.espacio{
+	margin-right: 50px;
+}
+h1{
+	text-align: center;
+}
 
+.menuUsuario{
+	margin-top: -20px;
+	background-color: rgba(0,0,0,0.7);
+}
+
+.centroMenu{
+	margin-left: 34%
 }
