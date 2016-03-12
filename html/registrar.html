@@ -12,7 +12,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-8 col-sm-offset-2" ng-class="{'has-error':formularioRegistro.correoRegistro.$invalid && formularioRegistro.correoRegistro.$touched}">
-                <label for="correoRegistro" class="control-label">Correo electronico</label>
+                <label for="correoRegistro" class="control-label">Correo electrónico</label>
                 <input type="email" class="form-control" name="correoRegistro" id="correoRegistro" ng-required="true" ng-model="nuevoUsuario.correo">
                 <span ng-if="formularioRegistro.correoRegistro.$error.required && formularioRegistro.correoRegistro.$touched" class="help-block">El correo es requerido.</span>
                 <span ng-if="formularioRegistro.correoRegistro.$error.email && formularioRegistro.correoRegistro.$touched" class="help-block">El correo no es valido.</span>
