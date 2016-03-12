@@ -1,9 +1,10 @@
-angular.module("myApp")
+angular.module("myApp.controladores")
 
 .controller('agregarCtrl',
-	['$scope', 'servicioBaseDatos', 
-		function ($scope, servicioBaseDatos){
-			$scope.movimientoNuevo = {};
+	['$scope'/*, 'servicioBaseDatos'*/, 
+
+		function ($scope/*, servicioBaseDatos*/){
+			/*$scope.movimientoNuevo = {};
 
 			var getListaMovimientos =  function () {
 				return servicioBaseDatos.getAll();
@@ -36,10 +37,10 @@ angular.module("myApp")
 			};
 
 			$scope.init= function () {
-				$scope.toDos= geToDoList();
+				$scope.nuevoMovimiento= getListaMovimientos();
 			}
 
-			$scope.init();
+			$scope.init();*/
 
 	}
 ]);

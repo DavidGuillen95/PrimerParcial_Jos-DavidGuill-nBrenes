@@ -1,4 +1,4 @@
-angular.module("myApp", ['ngRoute', 'servicioBaseDatos'])
+angular.module("myApp", ['ngRoute', 'baseDatos', 'myApp.controladores'])
 
 .config(function($routeProvider) {
 	$routeProvider
@@ -6,10 +6,12 @@ angular.module("myApp", ['ngRoute', 'servicioBaseDatos'])
 	        templateUrl: 'html/inicio.html'
 	    })
 	    .when('/registrar', {
-	        templateUrl: 'html/registrar.html'
+	        templateUrl: 'html/registrar.html',
+	        controller: 'registrarCtrl' 
 	    })
 	    .when('/ingresar', {
-	        templateUrl: 'html/ingresar.html'
+	        templateUrl: 'html/ingresar.html',
+	        controller: 'inicioCtrl' 
 	    })
 	    .when('/usuario/agregar', {
 	        templateUrl: 'html/agregar.html',
@@ -22,6 +24,10 @@ angular.module("myApp", ['ngRoute', 'servicioBaseDatos'])
 	    .when('/usuario/resumen', {
 	        templateUrl: 'html/resumen.html',
 	        controller: 'resumenCtrl'
+	    })
+	    .when('/usuario/editar', {
+	        templateUrl: 'html/editarUsuario.html',
+	        controller: 'usuarioCtrl'
 	    })
 	    .otherwise({redirectTo: '/inicio'});
 	}
@@ -58,3 +64,5 @@ angular.module("myApp", ['ngRoute', 'servicioBaseDatos'])
 	     }
 	   };
 });
+
+angular.module('myApp.controladores', []);

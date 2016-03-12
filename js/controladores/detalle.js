@@ -1,10 +1,10 @@
-angular.module("myApp")
+angular.module("myApp.controladores")
 
 .controller('detalleCtrl',
 	['$scope',
 		function ($scope){
 			$scope.movimientos = [
-				{transaccion: '213', fecha:'2323', detalle: '12312', tipoMovimiento:'comer', monto:'3434'}
+				{id: '213', fecha: new Date("October 13, 2014 11:13:00"), detalle:'Venta de la casa',  tipoMovimiento:'Corriente', monto:'50400'}
 			];
 		}
 	]

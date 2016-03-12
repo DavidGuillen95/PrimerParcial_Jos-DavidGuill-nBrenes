@@ -28,6 +28,10 @@ angular.module('servicioBaseDatos', [])
 			 	guardarDatos.updateStorage();
 			 	return guardarDatos.getAll();
 		}
+
+		guardarDatos.getAll= function(){
+			return guardarDatos.nuevoMovimiento;
+		};
 		
 		return guardarDatos;
 	}]);

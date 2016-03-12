@@ -1,9 +1,9 @@
-angular.module("myApp")
+angular.module("myApp.controladores")
 
-.controller('agregarCtrl',
+.controller('inicioCtrl',
 		['$scope', 
 			function ($scope){
-			$scope.tipoMoneda = ['Colones','Dólares']
+			
 			}
 		]
 );

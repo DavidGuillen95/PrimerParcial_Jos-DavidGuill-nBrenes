@@ -1,0 +1,40 @@
+<div class="container">
+	<h1>Mi cuenta | Editar</h1>
+</div>
+<div class="container">
+    <h2>Editar informacion</h2>
+    <h4 ng-repeat="movimiento in movimientos">A continuación el detalle de su transaccion realizada el {{movimiento.fecha | date:'fullDate'}}.</h4>
+    <hr class="featurette">
+    <a class="btn btn-primary pull-right" ng-href="#/usuario/resumen">Cancelar</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="clearfix">Datos</th>
+                <th></th>
+                <th class="clearfix">Acciones</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="usuario in usuarios">
+            <tr>
+                <th>Nombre</th>
+                <td>{{usuario.nombre}}</td>
+                <td><a href="">Editar</a></td>
+            </tr>
+            <tr>
+                <th>Correo Electronico</th>
+                <td>{{usuario.correo}}</td>
+                <td><a href="">Editar</a></td>
+            </tr>
+            <tr>
+                <th>Contraseña</th>
+                <td></td>
+                <td><a href="">Editar</a></td>
+            </tr>
+            <tr>
+                <th>Tipo moneda</th>
+                <td>{{usuario.tipoMoneda}}</td>
+                <td><a href="">Editar</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

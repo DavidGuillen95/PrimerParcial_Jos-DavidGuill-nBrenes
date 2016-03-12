@@ -3,7 +3,7 @@
 </div>
 <div class="container">
     <h2>Detalle de Trasacción</h2>
-    <h4>A continuación el detalle de su transaccion realizada el {{movimientos.fecha}}.</h4>
+    <h4 ng-repeat="movimiento in movimientos">A continuación el detalle de su transaccion realizada el {{movimiento.fecha | date:'fullDate'}}.</h4>
     <hr class="featurette">
     <a class="btn btn-primary pull-right" ng-href="#/usuario/resumen">Volver</a>
     <table class="table table-striped">
@@ -18,12 +18,12 @@
             </tr>
         </thead>
         <tbody id="listaMisiones">
-        	<tr ng-repeat="actividad in toDos">
-                <td>{{movimientos.id}}</td>
-                <td>{{movimientos.fecha}}</td>
-                <td>{{movimientos.detalle}}</td>
-                <td>{{movimientos.tipoMovimiento}}</td>
-                <td>{{movimientos.monto}}</td>
+        	<tr ng-repeat="movimiento in movimientos">
+                <td>{{movimiento.id}}</td>
+                <td>{{movimiento.fecha | date:'fullDate'}}</td>
+                <td>{{movimiento.detalle}}</td>
+                <td>{{movimiento.tipoMovimiento}}</td>
+                <td>{{movimiento.monto | currency:'$'}}</td>
                 <td><a ng-href="">Editar</a> | <a ng-click="eliminarMovimiento()">Elminar</a></td>
             </tr>
         </tbody>

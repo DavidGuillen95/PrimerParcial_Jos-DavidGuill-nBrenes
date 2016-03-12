@@ -1,4 +1,4 @@
-angular.module("myApp")
+angular.module("myApp.controladores")
 
 .controller('resumenCtrl',
 	['$scope'/*,'servicioBaseDatos', '$routeParams'*/, 

@@ -1,10 +1,8 @@
-angular.module("myApp")
+angular.module("myApp.controladores")
 
-.controller('agregarCtrl',
+.controller('registrarCtrl',
 		['$scope', 
 			function ($scope){
-			$scope.tipoMoneda = ['Colones','Dólares'],
-			$scope.tipoMovimiento = ['Ahorros','Corriente']
 			}
 		]
 );
