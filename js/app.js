@@ -1,70 +1,60 @@
-angular.module("myApp", ['ngRoute'])
+angular.module("myApp", ['ngRoute', 'servicioBaseDatos'])
 
-	.config(function($routeProvider) {
-	    $routeProvider
-	    	.when('/inicio', {
-	            templateUrl: 'html/inicio.html'
-	        })
-	        .when('/registrar', {
-	            templateUrl: 'html/registrar.html'
-	        })
-	        .when('/ingresar', {
-	            templateUrl: 'html/ingresar.html'
-	        })
-	        .when('/usuario/agregar', {
-	            templateUrl: 'html/agregar.html'
-	        })
-	        .when('/usuario/detalle', {
-	            templateUrl: 'html/detalle.html',
-	            controller: 'detalleCtrl'
-	        })
-	        .when('/usuario/registro', {
-	            templateUrl: 'html/registro.html'
-	        })
-	        .when('/usuario/resumen', {
-	            templateUrl: 'html/resumen.html',
-	            controller: 'resumenCtrl'
-	        })
-	        .otherwise({redirectTo: '/inicio'});
-	})
+.config(function($routeProvider) {
+	$routeProvider
+	    .when('/inicio', {
+	        templateUrl: 'html/inicio.html'
+	    })
+	    .when('/registrar', {
+	        templateUrl: 'html/registrar.html'
+	    })
+	    .when('/ingresar', {
+	        templateUrl: 'html/ingresar.html'
+	    })
+	    .when('/usuario/agregar', {
+	        templateUrl: 'html/agregar.html',
+	        controller: 'agregarCtrl' 
+	    })
+	    .when('/usuario/movimiento/detalle', {
+	    	templateUrl: 'html/detalle.html',
+	    	controller: 'detalleCtrl'
+	    })
+	    .when('/usuario/resumen', {
+	        templateUrl: 'html/resumen.html',
+	        controller: 'resumenCtrl'
+	    })
+	    .otherwise({redirectTo: '/inicio'});
+	}
+)
 
-	.controller('registroCtrl',
-		['$scope', 
-			function ($scope){
-		
-			}
-		]
-	)
+.directive("passwordVerify", function() {
+   return {
+      require: "ngModel",
+      scope: {
+        passwordVerify: '='
+      },
+      link: function(scope, element, attrs, ctrl) {
+        scope.$watch(function() {
+            var combined;
 
-	.controller('agregarCtrl',
-		['$scope', 
-			function ($scope){
-		
-			}
-		]
-	)
-
-	.controller('detalleCtrl',
-		['$scope',
-			function ($scope){
-				$scope.detalles = [
-				{transaccion: '213', fecha:'2323', detalle: '12312', monto:'3434'},
-				{transaccion: '213', fecha:'2323', detalle: '12312', monto:'3434'},
-				{transaccion: '213', fecha:'2323', detalle: '12312', monto:'3434'}
-				];
-			}
-		]
-	)
-
-	.controller('resumenCtrl',
-		['$scope', 
-			function ($scope){
-				$scope.resumenes = [
-				{fecha: '213', detalle:'2323', monto:'3434'},
-				{fecha: '213', detalle:'2323', monto:'3434'},
-				{fecha: '213', detalle:'2323', monto:'3434'}
-				];
-			}
-		]
-	)
-;
+            if (scope.passwordVerify || ctrl.$viewValue) {
+               combined = scope.passwordVerify + '_' + ctrl.$viewValue; 
+            }                    
+            return combined;
+        }, function(value) {
+            if (value) {
+                ctrl.$parsers.unshift(function(viewValue) {
+                    var origin = scope.passwordVerify;
+                    if (origin !== viewValue) {
+                        ctrl.$setValidity("passwordVerify", false);
+                        return undefined;
+                    } else {
+                        ctrl.$setValidity("passwordVerify", true);
+                        return viewValue;
+                    }
+	                });
+	            }
+	        });
+	     }
+	   };
+});

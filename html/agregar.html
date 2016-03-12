@@ -1,48 +1,47 @@
-<div class="menuUsuario">
-    <div class="container">
-        <nav class="centroMenu">
-            <div class="navbar-inverse">
-                <div>
-                    <ul class="nav navbar-nav">
-                      <li><a href="#/usuario/registro">Registro</a></li>
-                      <li><a href="#/usuario/resumen">Resumen</a></li>
-                      <li class="active"><a href="#/usuario/agregar">Agregar</a></li>
-                      <li><a href="#/usuario/detalle">Detalle</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
+<div class="container">
+    <h1>Mi cuenta | Agregar Movimiento</h1>
 </div>
 
 <div class="container">
-    <h1>Mi cuenta | Agregar</h1>
-</div>
-<div class="container">
-    <h2>Agregar Movimiento</h2>
+    <a class="btn btn-primary pull-right" ng-href="#/usuario/resumen">Cancelar</a>
+    <h2>Nuevo Movimiento</h2>
     <hr class="featurette">
-    <form class="form-horizontal">
+    <form class="form-horizontal" name="agregarMovimientoFormulario" id="agregarMovimientoFormulario" ng-submit="agregarMovimiento()">
     	<div class="form-group">
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-sm-8 col-sm-offset-2" ng-class="{'has-error':agregarMovimientoFormulario.fecha.$invalid && agregarMovimientoFormulario.fecha.$touched}">
             	<label for="fecha" class="control-label">Fecha</label>
-                <input type="date" class="form-control" name="fecha" required ng-model="agregarModel.fecha">
+                <input type="date" class="form-control" id="fecha" name="fecha" ng-required="true" ng-model="movimientoNuevo.fecha">
+                <span ng-if="agregarMovimientoFormulario.fecha.$invalid && agregarMovimientoFormulario.fecha.$touched" class="help-block">La fecha es requerida.</span>
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-sm-8 col-sm-offset-2" ng-class="{'has-error':agregarMovimientoFormulario.monto.$invalid && agregarMovimientoFormulario.monto.$touched}">
             	<label for="monto" class="control-label">Monto</label>
-                <input type="text" class="form-control" name="monto" required ng-model="agregarModel.monto">
+                <input type="text" class="form-control" id="monto" name="monto" ng-required="true" ng-model="movimientoNuevo.monto">
+                <span ng-if="agregarMovimientoFormulario.monto.$invalid && agregarMovimientoFormulario.monto.$touched" class="help-block">El monto es requerido.</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-8 col-sm-offset-2" ng-class="{'has-error':agregarMovimientoFormulario.tipo.$invalid && agregarMovimientoFormulario.tipo.$touched}">
+                <label for="tipo" class="control-label">Tipo</label>
+                <select class="form-control" name="tipo" id="tipo" ng-required="true" ng-model="movimientoNuevo.tipoMovimiento">
+                    <option value="">-Tipo-</option>
+                    <option value="ahorros">Ahorros</option>
+                    <option value="corriente">Corriente</option>
+                </select>
+                <span ng-if="agregarMovimientoFormulario.tipo.$invalid && agregarMovimientoFormulario.tipo.$touched" class="help-block">El tipo de movimiento es requerido.</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-8 col-sm-offset-2" ng-class="{'has-error':agregarMovimientoFormulario.detalle.$invalid && agregarMovimientoFormulario.detalle.$touched}">
+                <label for="detalle" class="control-label">Detalle</label>
+                <textarea class="form-control" name="detalle" id="detalle"  ng-required="true" ng-model="movimientoNuevo.detalle"></textarea>
+                <span ng-if="agregarMovimientoFormulario.detalle.$invalid && agregarMovimientoFormulario.detalle.$touched" class="help-block">El detalle es requerido.</span>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-8 col-sm-offset-2">
-            	<label for="detalle" class="control-label">Detalle</label>
-                <textarea class="form-control" name="detalle" required ng-model="agregarModel.detalle"></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-8 col-sm-offset-2">
-                <input type="submit" value="Agregar" class="btn btn-primary pull-right" ng-click="agregarBtn()">
+                <input type="submit" value="Agregar" class="btn btn-primary pull-right">
             </div>
         </div>
    </form>

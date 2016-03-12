@@ -1,42 +1,51 @@
-<div class="menuUsuario">
-    <div class="container">
-        <nav class="centroMenu">
-            <div class="navbar-inverse">
-                <div>
-                    <ul class="nav navbar-nav">
-                      <li><a href="#/usuario/registro">Registro</a></li>
-                      <li class="active"><a href="#/usuario/resumen">Resumen</a></li>
-                      <li><a href="#/usuario/agregar">Agregar</a></li>
-                      <li><a href="#/usuario/detalle">Detalle</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-</div>
-
 <div class="container">
 	<h1>Mi cuenta | Resumen</h1>
 </div>
 <div class="container">
+    <a class="btn btn-primary pull-right" ng-href="#/usuario/agregar">Nuevo Movimiento</a>
     <h2>Bienvenido .</h2>
     <h4>Estas son sus ultimas diez transacciones en su cuenta .</h4>
     <hr class="featurette">
+    <div class="col-sm-offset-2">
+        <a ng-click="MostrarBusqueda()" class="btn btn-primary pull-right">Buscar</a>
+        <div class="col-sm-8" ng-show="formVisibility">
+            <input type="text" class="form-control" name="buscar" ng-model="buscar">
+        </div>
+        <a ng-click="OcultarBusqueda()" ng-show="formVisibility" class="btn btn-primary">Cerrar</a>
+    </div>
+    <br/>
+    <br/>
+    <br/>
     <table class="table table-striped">
         <thead>
             <tr>
-                <th class="clearfix">Fecha</th>
-                <th class="clearfix">Detalle</th>
-                <th class="clearfix">Monto</th>
+                <th class="clearfix">
+                    <a href="" ng-click="ordenarPor('fecha')">Fecha</a>
+                    <span class="caret" style="cursor:pointer" ng-click="ordenarPor('-fecha')"></span>
+                </th>
+                <th class="clearfix">
+                    <a href="" ng-click="ordenarPor('detalle')">Detalle</a>
+                    <span class="caret" style="cursor:pointer" ng-click="ordenarPor('-detalle')"></span>
+                </th>
+                <th class="clearfix">
+                    <a href="" ng-click="ordenarPor('monto')">Monto</a>
+                    <span class="caret" style="cursor:pointer" ng-click="ordenarPor('-monto')"></span>
+                </th>
                 <th class="clearfix">Acciones</th>
             </tr>
         </thead>
         <tbody id="listaMisiones">
-        	<tr ng-repeat="resumen in resumenes">
-                <td>{{resumen.fecha}}</td>
-                <td>{{resumen.detalle}}</td>
-                <td>{{resumen.monto}}</td>
-                <td><a class="">Editar</a> | <a class="">Elminar</a></td>
+        	<tr ng-repeat="movimiento in nuevoMovimiento | orderBy:ordenSeleccionado | filter: buscar |limitTo:10">
+                <td>{{movimiento.fecha | date:'fullDate'}}</td>
+                <td>{{movimiento.detalle}}</td>
+                <td>{{movimiento.monto | currency:'$'}}</td>
+                <td><a class="" href="#/usuario/movimiento/detalle/{{movimiento.id}}">Ver</a></td>
+            </tr>
+            <tr>
+                <th class="clearfix">Saldo</th>
+                <th></th>
+                <td>00</td>
+                <th></th>
             </tr>
         </tbody>
     </table>

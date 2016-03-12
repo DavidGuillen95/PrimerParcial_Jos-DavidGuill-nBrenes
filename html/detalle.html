@@ -1,44 +1,30 @@
-<div class="menuUsuario">
-    <div class="container">
-        <nav class="centroMenu">
-            <div class="navbar-inverse">
-                <div>
-                    <ul class="nav navbar-nav">
-                      <li><a href="#/usuario/registro">Registro</a></li>
-                      <li><a href="#/usuario/resumen">Resumen</a></li>
-                      <li><a href="#/usuario/agregar">Agregar</a></li>
-                      <li class="active"><a href="#/usuario/detalle">Detalle</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-</div>
-
 <div class="container">
 	<h1>Mi cuenta | Detalle</h1>
 </div>
 <div class="container">
     <h2>Detalle de Trasacción</h2>
-    <h4>A continuación el detalle de su transaccion realizada el .</h4>
+    <h4>A continuación el detalle de su transaccion realizada el {{movimientos.fecha}}.</h4>
     <hr class="featurette">
+    <a class="btn btn-primary pull-right" ng-href="#/usuario/resumen">Volver</a>
     <table class="table table-striped">
         <thead>
             <tr>
                 <th class="clearfix">Transacción</th>
                 <th class="clearfix">Fecha</th>
                 <th class="clearfix">Detalle</th>
+                <th class="clearfix">Tipo</th>
                 <th class="clearfix">Monto</th>
                 <th class="clearfix">Acciones</th>
             </tr>
         </thead>
         <tbody id="listaMisiones">
-        	<tr ng-repeat="detalle in detalles">
-                <td>{{detalle.transaccion}}</td>
-                <td>{{detalle.fecha}}</td>
-                <td>{{detalle.detalle}}</td>
-                <td>{{detalle.monto}}</td>
-                <td><a class="">Ver</a></td>
+        	<tr ng-repeat="actividad in toDos">
+                <td>{{movimientos.id}}</td>
+                <td>{{movimientos.fecha}}</td>
+                <td>{{movimientos.detalle}}</td>
+                <td>{{movimientos.tipoMovimiento}}</td>
+                <td>{{movimientos.monto}}</td>
+                <td><a ng-href="">Editar</a> | <a ng-click="eliminarMovimiento()">Elminar</a></td>
             </tr>
         </tbody>
     </table>

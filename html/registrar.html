@@ -2,29 +2,48 @@
     <a class="btn btn-primary pull-right" ng-href="#/inicio">Volver</a>
     <h1>Nueva Cuenta</h1>
     <hr class="featurette">
-    <form class="form-horizontal" role="form" method="post" action="index.php">
+    <form class="form-horizontal" id="formularioRegistro" name="formularioRegistro">
     	<div class="form-group">
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-sm-8 col-sm-offset-2" ng-class="{'has-error':formularioRegistro.nombreRegistro.$invalid && formularioRegistro.nombreRegistro.$touched}">
             	<label for="nombreRegistro" class="control-label">Nombre completo</label>
-                <input type="text" class="form-control" name="nombreRegistro" required>
+                <input type="text" class="form-control" ng-required="true" name="nombreRegistro" id="nombreRegistro" ng-model="nuevoUsuario.nombre">
+                <span ng-if="formularioRegistro.nombreRegistro.$invalid && formularioRegistro.nombreRegistro.$touched" class="help-block">El nombre es requerido.</span>
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-sm-8 col-sm-offset-2" ng-class="{'has-error':formularioRegistro.correoRegistro.$invalid && formularioRegistro.correoRegistro.$touched}">
                 <label for="correoRegistro" class="control-label">Correo electronico</label>
-                <input type="text" class="form-control" name="correoRegistro" required>
+                <input type="email" class="form-control" name="correoRegistro" id="correoRegistro" ng-required="true" ng-model="nuevoUsuario.correo">
+                <span ng-if="formularioRegistro.correoRegistro.$error.required && formularioRegistro.correoRegistro.$touched" class="help-block">El correo es requerido.</span>
+                <span ng-if="formularioRegistro.correoRegistro.$error.email && formularioRegistro.correoRegistro.$touched" class="help-block">El correo no es valido.</span>
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-sm-8 col-sm-offset-2" ng-class="{'has-error':formularioRegistro.contrasennaRegistro.$invalid && formularioRegistro.contrasennaRegistro.$touched}">
                 <label for="contrasennaRegistro" class="control-label">Contraseña</label>
-                <input type="text" class="form-control" name="contrasennaRegistro" required>
+                <input class="form-control" id="contrasennaRegistro" ng-model="nuevoUsuario.contrasenna" ng-required="true" type="password" name='contrasennaRegistro' required>
+                <span ng-if="formularioRegistro.contrasennaRegistro.$invalid && formularioRegistro.contrasennaRegistro.$touched" class="help-block">La contraseña es requerida.</span>   
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-sm-8 col-sm-offset-2" ng-class="{'has-error':formularioRegistro.contrasennaRegistroRepetir.$invalid && formularioRegistro.contrasennaRegistroRepetir.$touched}">
                 <label for="contrasennaRegistroRepetir" class="control-label">Repetir Contraseña</label>
-                <input type="text" class="form-control" name="contrasennaRegistroRepetir" required>
+                <input ng-required="true" ng-model="nuevoUsuario.contrasennaRepetir" class="form-control" id="contrasennaRegistroRepetir" type="password" name='contrasennaRegistroRepetir' required data-password-verify="nuevoUsuario.contrasenna">
+
+                <span ng-if="formularioRegistro.contrasennaRegistroRepetir.$error.required && formularioRegistro.contrasennaRegistroRepetir.$touched" class="help-block">Repetir contraseña es requerido.</span>
+                <span ng-if="formularioRegistro.contrasennaRegistroRepetir.$error.passwordVerify" class="help-block">Las contraseñas no coinciden.</span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-sm-8 col-sm-offset-2" ng-class="{'has-error':formularioRegistro.moneda.$invalid && formularioRegistro.moneda.$touched}">
+                <label for="moneda" class="control-label">Tipo Moneda</label>
+                <select class="form-control" name="moneda" id="moneda" ng-required="true" ng-model="nuevoUsuario.moneda">
+                    <option value="">-Moneda-</option>
+                    <option value="dolar">Dólares</option>
+                    <option value="colon">Colones</option>
+                </select>
+                <span ng-if="formularioRegistro.moneda.$invalid && formularioRegistro.moneda.$touched" class="help-block">La moneda es requerida.</span>
             </div>
         </div>
         <div class="form-group">
@@ -35,3 +54,8 @@
    </form>
 </div>
 
+<div>
+   <form name='form'>
+      
+   </form>  
+</div>
